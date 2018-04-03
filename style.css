@@ -1,0 +1,63 @@
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+#container {
+  position: relative;
+  height: 800px;
+  width: 92%;
+  border: 5px solid black;
+  background-color: #fafdff;
+  margin-left: 4%;
+  margin-top: 1%;
+  overflow: hidden;
+}
+
+/*img changes with score and loops, once past every 6 points you get a bonus of some kind */
+#player {
+  position:absolute;
+  background: url('./assets/dice1.png');
+  height: 66px;
+  width: 66px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  left: calc(50% - 33px);
+  bottom: 99px;
+}
+
+/* needs to change as points increase */
+.wall {
+  position: absolute;
+  height: 33px;
+  width: 35%;
+  background-color: black;
+  top: -33px;
+}
+
+#wall_1 {
+  left: 0;
+}
+
+#wall_2 {
+  right: 0;
+}
+
+#scoreboard {
+  text-align: center;
+  font-size: 40px;
+}
+
+#restart {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: #96a5b2;
+  color: white;
+  font-size: 35px;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
