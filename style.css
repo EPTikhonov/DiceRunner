@@ -53,14 +53,7 @@ body {
 }
 
 #restart {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  padding: 20px;
-  background-color: #96a5b2;
-  color: white;
-  font-size: 35px;
-  border: none;
-  cursor: pointer;
-  display: none;
+  font-size: 18pt;
+  text-decoration: none;
+  color: black
 }

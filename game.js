@@ -29,9 +29,7 @@ $(function() {
 
   var game = setInterval(function() {
 
-    if (collision(player, wall_1) || collision(player, wall_2) ||
-      parseInt(player.css("left") >= container_width - player_width) || // TODO: player goes past right side
-      (player_left === 0)) { // TODO: player goes past left side
+    if (collision(player, wall_1) || collision(player, wall_2)) {
 
       stopGame();
     }
@@ -50,13 +48,13 @@ $(function() {
       if (wall_current_position < container_height - player_height) {
 
         // everytime player reaches 5 points (when dice face turns 6) consecutively they get a bonus of 10 pts plus
-        bonusPoints = bonusPoints + 1;
+        bonusPoints++;
         if (bonusPoints > 5) {
           bonusPoints = 0;
           score = score + 10;
-          console.log("9 Bonus Points Added to Score!");
+          console.log("10 Bonus Points Added to Score!");
         } else {
-          score = score + 1;
+          score++;
         }
         updateScore(score);
         playerImg(); // change player image based on score
@@ -124,7 +122,14 @@ $(function() {
     var b2 = y2 + h2;
     var r2 = x2 + w2;
 
-    if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+    // if player tries to go out of bounds
+    if (parseInt(player.css("left")) > (container_width - player_width)) {
+      player.css("left", (container_width / player_width));
+    } else if (parseInt(player.css("left")) <= 0) {
+      player.css("left", (container_width - player_width));
+    }
+
+    if (b1 <= y2 || y1 >= b2 || r1 <= x2 || x1 >= r2) {
       return false;
     } else {
       return true;
@@ -136,8 +141,8 @@ $(function() {
     score_span.text(score);
   };
 
+  // change player dice image if pass walls
   var playerImg = function() {
-    // change player dice image if pass walls
     if (playerImgNumber > 6) { // number of dice images
       playerImgNumber = 1;
       $("#player").attr('src', "./assets/dice" + playerImgNumber + ".png");
@@ -151,23 +156,15 @@ $(function() {
   var stopGame = function() {
     gameOver = true;
     clearInterval(game);
-    restart.slideDown();
   };
 
   var gameRestart = function() {
-    restart.slideUp();
     gameOver = false;
-    score = 0;
-    updateScore(score);
 
-    wall.css("top", "-33px");
-    player.css("left", "calc(50% - 33px)");
-    $("#player").attr('src', "./assets/dice1.png");
-    game_speed = 10;
-    // TODO: setInterval on game when restart button clicked
+    window.location.reload();
   };
 
-  $("#restart").on("click", function() {
+  restart.on("click", function() {
     gameRestart();
   });
 
