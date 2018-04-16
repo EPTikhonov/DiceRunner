@@ -21,10 +21,8 @@ body {
   }
 }
 
-/*img changes with score and loops, once past every 6 points you get a bonus of some kind */
 #player {
-  position:absolute;
-  background: url('./assets/dice1.png');
+  position: absolute;
   height: 66px;
   width: 66px;
   background-size: contain;
