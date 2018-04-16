@@ -18,6 +18,7 @@ $(function() {
   var player_left = parseInt(player.css("left"));
   var player_height = parseInt(player.css("height"));
   var player_width = parseInt(player.css("width"));
+  var backgroundColor = container.css("background-color");
   var game_speed = 10;
   var player_speed = 30;
   var playerImgNumber = 1;
@@ -53,6 +54,7 @@ $(function() {
           bonusPoints = 0;
           score = score + 10;
           console.log("10 Bonus Points Added to Score!");
+          backgroundColorChanger(backgroundColor); // change background color
         } else {
           score++;
         }
@@ -151,6 +153,15 @@ $(function() {
       $("#player").attr('src', "./assets/dice" + playerImgNumber + ".png");
       playerImgNumber++;
     }
+  };
+
+  // generating light colors for container background color
+  var backgroundColorChanger = function (backgroundColor) {
+    var red = parseInt(Math.random() * 255 + 100);
+    var green  = parseInt(Math.random() * 255 + 100);
+    var blue  = parseInt(Math.random() * 255 + 100);
+    var new_color = "rgb("+red+", "+green+", "+blue+")";
+    container.css("background-color", new_color);
   };
 
   var stopGame = function() {
