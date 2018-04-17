@@ -18,7 +18,6 @@ $(function() {
   var player_left = parseInt(player.css("left"));
   var player_height = parseInt(player.css("height"));
   var player_width = parseInt(player.css("width"));
-  var backgroundColor = container.css("background-color");
   var game_speed = 10;
   var player_speed = 30;
   var playerImgNumber = 1;
@@ -54,7 +53,7 @@ $(function() {
           bonusPoints = 0;
           score = score + 10;
           console.log("10 Bonus Points Added to Score!");
-          backgroundColorChanger(backgroundColor); // change background color
+          backgroundColorChanger(); // change background color
         } else {
           score++;
         }
@@ -156,7 +155,7 @@ $(function() {
   };
 
   // generating light colors for container background color
-  var backgroundColorChanger = function (backgroundColor) {
+  var backgroundColorChanger = function () {
     var red = parseInt(Math.random() * 255 + 100);
     var green  = parseInt(Math.random() * 255 + 100);
     var blue  = parseInt(Math.random() * 255 + 100);
