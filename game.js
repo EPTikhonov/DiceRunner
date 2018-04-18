@@ -19,7 +19,7 @@ $(function() {
   var player_height = parseInt(player.css("height"));
   var player_width = parseInt(player.css("width"));
   var game_speed = 10;
-  var player_speed = 30;
+  var player_speed = (container_width / player_width) * 4;
   var playerImgNumber = 1;
   var score = 0;
   var bonusPoints = 0;
@@ -38,11 +38,21 @@ $(function() {
 
     // check whether the walls went out of the container, if so then set to wall initial position
     if (wall_current_position > container_height) {
-      var new_width = parseInt(Math.random() * 100);
+      var width1;
+      var width2;
+      var random_width = parseInt(Math.random() * (container_width / 2));
 
-      // change the wall's width randomly
-      wall_1.css("width", wall_initial_width + new_width);
-      wall_2.css("width", wall_initial_width - new_width);
+      // 50/50 chance of wall generation flipping addition/substraction
+      if (score%2 === 0) { // if score even
+        width1 = (wall_initial_width + random_width);
+        width2 = (wall_initial_width - random_width);
+      } else { // if score odd
+        width1 = (wall_initial_width - random_width);
+        width2 = (wall_initial_width + random_width);
+      }
+      // change + & - each time (var operator)
+      wall_1.css("width", width1);
+      wall_2.css("width", width2);
       wall_current_position = wall_initial_position;
 
       if (wall_current_position < container_height - player_height) {
@@ -61,9 +71,9 @@ $(function() {
         playerImg(); // change player image based on score
       }
 
-      // increasing wall generation speed to 70
-      if (game_speed < 70) {
-        game_speed = game_speed + 2;
+      // increasing wall generation speed to 54
+      if (game_speed < 46) {
+        game_speed++;
       }
 
     }
