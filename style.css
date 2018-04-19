@@ -6,19 +6,14 @@ body {
 
 #container {
   position: relative;
-  height: 800px;
-  width: 92%;
+  height: 80vh;
+  width: 60%;
   border: 5px solid black;
   background-color: #fafdff;
-  margin-left: 4%;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-top: 1%;
   overflow: hidden;
-}
-
-@media screen and (max-height: 1000px) {
-  #container {
-    height: 600px;
-  }
 }
 
 #player {
