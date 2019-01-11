@@ -8,6 +8,8 @@ A JavaScript game where the player controls a dice, attempting to pass between t
 
 Check it out at: https://eptikhonov.github.io/DiceRunner/
 
+<a href="#"><img src="https://github.com/EPTikhonov/DiceRunner/blob/gh-pages/DiceRunner.gif" title="DiceRunner"/></a>
+
 ## Built With
 * HTML
 * CSS
